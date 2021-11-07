@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { createGenerateClassName } from '@material-ui/styles';
 
 // shows the selected pet data from Redux
 function MovieDetails() {
@@ -20,7 +21,8 @@ function MovieDetails() {
     console.log('allGenres', allGenres);
     console.log('allMoviesGenres', allMoviesGenres);
 
-    //let linkItem = '';
+    let genreArray = [];
+
     function junctionTableMapper () {
         {allMoviesGenres.map(linkItem => {    
                if(linkItem.movie_id === selectedMovie.id) 
@@ -29,9 +31,7 @@ function MovieDetails() {
                         {allGenres.map(genreItem => {
                             if(genreItem.id === linkItem.genre_id)
                                 return (
-                                    //console.log('genre name is', `${genreItem.name}`)
-                                    <p>`${genreItem.name}`</p>
-        
+                                    genreArray.push(`${genreItem.name}`)
                                 )
                         })}
                 }
@@ -40,8 +40,11 @@ function MovieDetails() {
                    
         })}
     }
+    
     junctionTableMapper();
-  
+
+  console.log('selected genre array',genreArray);
+
     return (
       <section>
         
@@ -62,6 +65,17 @@ function MovieDetails() {
                 <h2>{selectedMovie.title}</h2>
                 <img src={selectedMovie.poster} alt={selectedMovie.title}/>
                 <p>Description: {selectedMovie.description}</p>
+                <p>
+                Genres: 
+                    <ul>
+                        {genreArray.map((genre) => (
+                            <li >
+                                {genre}
+                            </li>  
+                        ))}
+                    </ul>
+
+                </p>
               </>
             ) : (
               <p>No movie selected.</p>
