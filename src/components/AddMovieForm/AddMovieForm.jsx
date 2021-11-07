@@ -1,17 +1,21 @@
 import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+// Form to add a movie
 function AddMovieForm() {
 
-    const history = useHistory();
+
+
+   
 
     return(
         <>
         <nav>
-         
-        <button onClick={(event) => {history.push('/')}}>Cancel</button>
-    
-    </nav>
+            <button onClick={(event) => {history.push('/')}}>Cancel</button>
+        </nav>
         <p>Add a Movie</p>
+
         </>
     )
 }

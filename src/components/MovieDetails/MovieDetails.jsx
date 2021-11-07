@@ -20,33 +20,35 @@ function MovieDetails() {
     console.log('allGenres', allGenres);
     console.log('allMoviesGenres', allMoviesGenres);
 
-    // if (`${selectedMovie.id}` === `${allMoviesGenres.movie_id}`) {
-    //     //display movies_genres.genre_id
-    //         //if movies_genres.genre_id === genre.id {
-    //             //display genre
-    //             console.log('allMoviesGenres.movieID', `${allMoviesGenres.movie_id}`)
-    //         }
-
-    // {allMovieGenres.map(item => {
-    //     if(item.movie_id === selectedMovie.id)
-    //     return (
-    //     console.log ('id is', {item.movie_id})
-    //     );
+    //let linkItem = '';
+    function junctionTableMapper () {
+        {allMoviesGenres.map(linkItem => {    
+               if(linkItem.movie_id === selectedMovie.id) 
+                    genresTableMapper();
+                    function genresTableMapper () {
+                        {allGenres.map(genreItem => {
+                            if(genreItem.id === linkItem.genre_id)
+                                return (
+                                    //console.log('genre name is', `${genreItem.name}`)
+                                    <p>`${genreItem.name}`</p>
         
-    //    })}
-    
+                                )
+                        })}
+                }
+                
+             
+                   
+        })}
+    }
+    junctionTableMapper();
+  
     return (
       <section>
-          <div>
-          {allMoviesGenres.map(item => {
-        if(item.movie_id === selectedMovie.id)
-            
-        // return (
-        // console.log ('id is', `${item.movie_id}`)
-        // );
         
-       })}
-          </div>
+          
+        
+       
+          
          <nav>
          
                 <button onClick={(event) => {history.push('/')}}>Back to List</button>
