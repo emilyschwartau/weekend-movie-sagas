@@ -1,10 +1,13 @@
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // shows the selected pet data from Redux
 function MovieDetails() {
     // data from redux
     const selectedMovie = useSelector((store) => store.selectedMovie);
+
+    const history = useHistory();
   
     useEffect(() => {
       // we could get more info about this movie from the server here
@@ -12,6 +15,11 @@ function MovieDetails() {
   
     return (
       <section>
+         <nav>
+         
+                <button onClick={(event) => {history.push('/')}}>Go back to Movies</button>
+            
+            </nav>
         <h1>Selected Movie</h1>
         {
           selectedMovie.title ? (
@@ -28,16 +36,5 @@ function MovieDetails() {
     );
   }
 
-
-
-
-
-
-// function MovieDetails () {
-// return (
-//     <p>Movie Details</p>
-
-// )
-// }
 
 export default MovieDetails;
