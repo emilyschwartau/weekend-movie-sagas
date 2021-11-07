@@ -16,6 +16,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('FETCH_MOVIES_GENRES', fetchMovies_Genres);
+    yield takeEvery('ADD_MOVIE', postMovie);
 }
 
 function* fetchAllMovies() {
@@ -42,6 +43,24 @@ function* fetchGenres() {
         console.log('get genres error');
     }
         
+}
+
+//post movie saga axios post request
+function* postMovie (action) {
+  
+    try {
+     
+        yield axios.post('/api/movie', {
+            title: action.payload.title,
+            poster: action.payload.poster,
+            description: action.payload.description
+        })
+    
+        yield put({type: 'FETCH_MOVIES'})
+    } catch (err) {
+       console.log(err);
+       yield put({type: 'POST_ERROR'})
+    }
 }
 
 function* fetchMovies_Genres() {

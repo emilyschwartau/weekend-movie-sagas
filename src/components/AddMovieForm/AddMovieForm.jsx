@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 function AddMovieForm() {
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     // const [newTitle, setNewTitle] = useState('');
     // const [newPoster, setNewPoster] = useState('');
     // const [newDescription, setNewDescription] = useState('');
 
-    let [newMovie, setNewMovie] = useState({ id: 15, title: '', poster: '', description: ''});
+    let [newMovie, setNewMovie] = useState({ title: '', poster: '', description: ''});
 
     const handleTitleChange = (event) => {
         //console.log('event happened');
@@ -32,7 +33,7 @@ function AddMovieForm() {
         event.preventDefault();
         dispatch({ type: 'ADD_MOVIE', payload: newMovie });
         //updates the next plant to have a new id
-        setNewMovie({ id:newMovie.id + 1, title: '', poster: '', description: ''});
+        setNewMovie({ title: '', poster: '', description: ''});
     }
 
     return(
