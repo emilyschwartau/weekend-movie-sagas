@@ -17,9 +17,9 @@ function MovieDetails() {
       
     });
   
-    console.log('selectedMovie', selectedMovie);
-    console.log('allGenres', allGenres);
-    console.log('allMoviesGenres', allMoviesGenres);
+    //console.log('selectedMovie', selectedMovie);
+    //console.log('allGenres', allGenres);
+    //console.log('allMoviesGenres', allMoviesGenres);
 
     let genreArray = [];
 
@@ -43,19 +43,12 @@ function MovieDetails() {
     
     junctionTableMapper();
 
-  console.log('selected genre array',genreArray);
+  console.log('selected genre array', genreArray);
 
     return (
       <section>
-        
-          
-        
-       
-          
          <nav>
-         
                 <button onClick={(event) => {history.push('/')}}>Back to List</button>
-            
             </nav>
         <h1>Selected Movie</h1>
         {
@@ -65,17 +58,17 @@ function MovieDetails() {
                 <h2>{selectedMovie.title}</h2>
                 <img src={selectedMovie.poster} alt={selectedMovie.title}/>
                 <p>Description: {selectedMovie.description}</p>
-                <p>
+                <div>
                 Genres: 
                     <ul>
-                        {genreArray.map((genre) => (
-                            <li >
+                        {genreArray.map((genre, index) => (
+                            <li key={index}>
                                 {genre}
                             </li>  
                         ))}
                     </ul>
 
-                </p>
+                </div>
               </>
             ) : (
               <p>No movie selected.</p>
