@@ -8,11 +8,11 @@ function AddMovieForm() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    // const [newTitle, setNewTitle] = useState('');
-    // const [newPoster, setNewPoster] = useState('');
-    // const [newDescription, setNewDescription] = useState('');
+    const genresList = useSelector((store) => store.genres);
 
-    let [newMovie, setNewMovie] = useState({ title: '', poster: '', description: ''});
+
+    let [newMovie, setNewMovie] = useState({ title: '', poster: '', description: '', genre_id: ''});
+    //let [genre_id, setGenre_id] = useState(0);
 
     const handleTitleChange = (event) => {
         //console.log('event happened');
@@ -29,13 +29,20 @@ function AddMovieForm() {
         setNewMovie({...newMovie, description: event.target.value})
     }
 
+    const handleGenreChange = (event) => {
+        //console.log('event happened');
+        setNewMovie({...newMovie, genre_id: event.target.value})
+    }
+
+
     const addNewMovie = event => {
         event.preventDefault();
         dispatch({ type: 'ADD_MOVIE', payload: newMovie });
-        //updates the next plant to have a new id
-        setNewMovie({ title: '', poster: '', description: ''});
+        //updates the next 
+        setNewMovie({ title: '', poster: '', description: '', genre_id: ''});
     }
 
+    //console.log('genre_id', genre_id);
     return(
         <>
         <nav>
@@ -49,7 +56,25 @@ function AddMovieForm() {
                 <input placeholder='Poster url' type='text' value={newMovie.poster} onChange={handlePosterChange} />
                 {/* <input type='text-area' value={newMovie.description} onChange={handlePosterChange} /> */}
                 <textarea placeholder='Description' rows="4" cols="50" value={newMovie.description} onChange={handleDescriptionChange}></textarea>
-                <input type='submit' value='Add New Movie' />
+                
+                      {/* drop down with genre names */}
+                <select value={newMovie.genre_id} 
+                    onChange={handleGenreChange}>
+          
+                    <option disabled value='0'>
+                        Pick One!
+                    </option>
+
+                    {genresList.map((genre) => {
+                    return (
+                    <option key={genre.id} value={genre.id}>
+                    {genre.name}
+                    </option>
+                    );
+                    })}
+                </select>
+
+                <input type='submit' value='Save' />
             </form>
         </div>
 
