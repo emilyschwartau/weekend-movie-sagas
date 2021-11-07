@@ -8,7 +8,7 @@ function AddMovieForm() {
         <>
         <nav>
          
-        <button onClick={(event) => {history.push('/')}}>Go back to Movies</button>
+        <button onClick={(event) => {history.push('/')}}>Cancel</button>
     
     </nav>
         <p>Add a Movie</p>

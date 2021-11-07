@@ -8,7 +8,7 @@ const pool = require('../modules/pool')
 router.get('/', (req, res) => {
   // Add query to get all genres
   //this probably needs to change to code below
-  const query = `SELECT * FROM "genres"`;
+  const query = `SELECT * FROM "movies_genres"`;
   // const query = `SELECT "genres"."name" FROM "movies_genres"
   //  JOIN "genres" ON "genres"."id" = "movies_genres"."genre_id"
   //  JOIN "movies" ON "movies"."id" = "movies_genres"."movie_id"
@@ -24,23 +24,3 @@ router.get('/', (req, res) => {
 });
 
 module.exports = router;
-
-// SELECT "genres"."name" FROM "movies_genres"
-// JOIN "genres" ON "genres"."id" = "movies_genres"."genre_id"
-// JOIN "movies" ON "movies"."id" = "movies_genres"."movie_id"
-// WHERE "movies"."title" = 'Toy Story';
-
-
-
-
-//example
-
-//this is equivalent to /api/genre , genreRouter in server.js
-// app.use('/student', student);
-
-//equivalent to get in this page?? 
-// student.get('/profile/:start/:end', function (req, res) {
-//     console.log("Starting Page: ", req.params['start']);
-//     console.log("Ending Page: ", req.params['end']);
-//     res.send();
-// })
