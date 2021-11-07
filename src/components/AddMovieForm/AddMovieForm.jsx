@@ -42,7 +42,7 @@ function AddMovieForm() {
         setNewMovie({ title: '', poster: '', description: '', genre_id: ''});
     }
 
-    //console.log('genre_id', genre_id);
+    
     return(
         <>
         <nav>
@@ -54,10 +54,9 @@ function AddMovieForm() {
             <form onSubmit={addNewMovie}>
                 <input placeholder='Title' type='text' value={newMovie.title} onChange={handleTitleChange} />
                 <input placeholder='Poster url' type='text' value={newMovie.poster} onChange={handlePosterChange} />
-                {/* <input type='text-area' value={newMovie.description} onChange={handlePosterChange} /> */}
                 <textarea placeholder='Description' rows="4" cols="50" value={newMovie.description} onChange={handleDescriptionChange}></textarea>
                 
-                      {/* drop down with genre names */}
+                {/* drop down with genre names */}
                 <select value={newMovie.genre_id} 
                     onChange={handleGenreChange}>
           
