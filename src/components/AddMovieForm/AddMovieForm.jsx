@@ -50,20 +50,21 @@ function AddMovieForm() {
     
     return(
         <>
+        <p>Add a Movie</p>
         <nav>
             <button onClick={(event) => {history.push('/')}}>Cancel</button>
         </nav>
-        <p>Add a Movie</p>
+        
 
         <div>
             <form onSubmit={addNewMovie} >
                 <input placeholder='Title' type='text' value={newMovie.title} onChange={handleTitleChange} />
-                <input placeholder='Poster url' type='text' value={newMovie.poster} onChange={handlePosterChange} />
+                <input placeholder='Poster image url' type='text' value={newMovie.poster} onChange={handlePosterChange} />
                 <textarea placeholder='Description' rows="4" cols="50" value={newMovie.description} onChange={handleDescriptionChange}></textarea>
                 
                 {/* drop down with genre names */}
                 <div>
-                <label for='dropdown'>Select a Genre: </label>
+                <label htmlFor='dropdown'>Select a Genre: </label>
                 <select id='dropdown' value={newMovie.genre_id} onChange={handleGenreChange}>
 
                     {genresList.map((genre) => {

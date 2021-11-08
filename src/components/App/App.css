@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: burlywood;
 }
 
 
@@ -21,4 +22,12 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* h1 {
+  background-color: blueviolet;
+} */
+
+#header {
+  background-color: blueviolet;
 }
