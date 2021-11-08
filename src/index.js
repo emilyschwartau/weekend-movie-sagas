@@ -73,6 +73,8 @@ function* fetchMovies_Genres() {
     }
 }
 
+//Dane's solve: write another saga function for selected genres
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -111,6 +113,9 @@ const selectedMovie = (state = {}, action) => {
     switch (action.type) {
       case 'SET_SELECTED_MOVIE':
         return action.payload;
+    //Dane's solve:
+    // case 'SET_SELECTED_MOVIE_GENRES':
+    //     return {...state, genres: action.payload};
       default:
         return state;
     }

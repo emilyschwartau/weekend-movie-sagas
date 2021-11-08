@@ -3,6 +3,14 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function MovieDetails() {
+
+    //Dane's solve: 
+    //use Effect that does type: Fetch_movie_genres, payload: selectedMovie (this is the movie id)
+    //axios get request saga instead of '/api/movie' we just want one movie so '/api/movie/${action.payload}'
+    //make a new reducer for selected genres
+    //can add another case to  selectedMovie reducer to add genres
+    //selectedMovie.genres?.map(genre =>) - how to display on DOM
+    //question mark is make sure genres is a thing before you map over it
     
     //retrieves data from redux store
     const selectedMovie = useSelector((store) => store.selectedMovie);
