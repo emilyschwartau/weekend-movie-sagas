@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
-import MovieItem from '../MovieItem/MovieItem';
 import { useHistory } from 'react-router-dom';
 
 function MovieList() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const movies = useSelector(store => store.movies);
-    // const genres = useSelector(store => store.genres);
 
+    //retrieves movies from the store
+    const movies = useSelector(store => store.movies);
+
+    //firing off actions to get data from DB
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
         dispatch({type: 'FETCH_GENRES'})
@@ -19,17 +20,12 @@ function MovieList() {
 
     const handleSelectMovie = (movie) => {
         // store selected movie object in Redux
-        dispatch({ type: 'SET_SELECTED_MOVIE', payload: movie });
-        //I think I should dispatch set_genre here as well, or fetch_genre?? //
-        //dispatch({type: 'FETCH_GENRES'}); 
-        //dispatch({type: 'FETCH_MOVIES_GENRES'}); 
+        dispatch({ type: 'SET_SELECTED_MOVIE', payload: movie }); 
 
         // go to details view
         history.push('/details');
-        console.log(movie);
-      };
-
-      
+        //console.log(movie);
+    };
 
     return (
         <main>
@@ -46,7 +42,7 @@ function MovieList() {
                         </div>
                     );
                     
-                   })} 
+                })} 
             </section>
         </main>
 

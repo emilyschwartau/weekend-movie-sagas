@@ -20,8 +20,9 @@ function* rootSaga() {
     
 }
 
+//gets all movies from the DB and stores them in reducer
 function* fetchAllMovies() {
-    // get all movies from the DB
+    
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
@@ -33,8 +34,9 @@ function* fetchAllMovies() {
         
 }
 
+//gets all genres from the DB and stores them in reducer
 function* fetchGenres() {
-    // get all genres from the DB
+    
     try {
         const genres = yield axios.get('/api/genre');
         console.log('get genres:', genres.data);
@@ -46,12 +48,10 @@ function* fetchGenres() {
         
 }
 
-
-//post movie saga axios post request
+//saga axios post request to post movie to DB
 function* postMovie (action) {
   
     try {
-     
         yield axios.post('/api/movie', action.payload);
         yield put({type: 'FETCH_MOVIES'});
     } catch (err) {
@@ -60,9 +60,9 @@ function* postMovie (action) {
     }
 }
 
-
+// gets data from movies_genres table from DB and stores data in reducer
 function* fetchMovies_Genres() {
-    //get movies_genres from the DB
+    
     try {
         const movies_genres = yield axios.get('/api/movies_genres');
         console.log('get movies_genres:', movies_genres.data);
@@ -96,7 +96,7 @@ const genres = (state = [], action) => {
     }
 }
 
-// Used to store the movie movie_genres
+// Used to store the movie_genres data
 const movies_genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES_GENRES':

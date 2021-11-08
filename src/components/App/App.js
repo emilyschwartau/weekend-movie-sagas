@@ -10,7 +10,8 @@ function App() {
     <div className="App">
       <h1>The Movies Saga!</h1>
       <Router> 
-               
+
+        {/* Main Page with Movie List */}
         <Route path="/" exact>
           <MovieList />
         </Route>

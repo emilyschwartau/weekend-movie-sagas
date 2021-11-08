@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+//selects all movies from movies table
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
@@ -16,6 +17,8 @@ router.get('/', (req, res) => {
 
 });
 
+//posts new movies title, poster, description to movies table
+//posts genre_id to movies_genres table
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
