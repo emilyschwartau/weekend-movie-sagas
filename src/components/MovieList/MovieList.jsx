@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
 import { useHistory } from 'react-router-dom';
+import { Card } from '@material-ui/core';
+import Grid from '@mui/material/Grid';
 
 function MovieList() {
 
@@ -38,10 +40,15 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} onClick={() => handleSelectMovie(movie)}>
-                            <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
-                        </div>
+                       
+                                <div id="margin">
+                                    <Card >
+                                        <div id="card" key={movie.id} onClick={() => handleSelectMovie(movie)}>
+                                            <h3>{movie.title}</h3>
+                                            <img src={movie.poster} alt={movie.title}/>
+                                        </div>
+                                    </Card>
+                                </div>
                     );
                     
                 })} 

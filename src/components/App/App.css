@@ -24,10 +24,9 @@
   to { transform: rotate(360deg); }
 }
 
-/* h1 {
-  background-color: blueviolet;
-} */
+
 
 #header {
   background-color: blueviolet;
+  padding: 20px;
 }

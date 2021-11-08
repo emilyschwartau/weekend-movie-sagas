@@ -1,6 +1,23 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
+    margin: 10px;
+    
+}
+
+/* #card {
+   margin: 10px;
+   /* padding: 50px; */
+  
+
+/* Card {
+    margin: 10px;
+} */
+
+img {
+    width: 200px;
+    height: 300px;
+    margin: 10px;
 }
 
 #movieList {
@@ -24,4 +41,8 @@ nav {
     background-color: blueviolet;
     height: 100px; 
     padding: 20px;  
+}
+
+#margin {
+    margin: 10px;
 }
