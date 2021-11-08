@@ -1,12 +1,18 @@
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 
 // Form to add a movie
 function AddMovieForm() {
 
     const history = useHistory();
     const dispatch = useDispatch();
+
+    //firing off actions to get data from DB
+    useEffect(() => {
+        dispatch({type: 'FETCH_GENRES'})
+    }, []);
 
     //retrieving all genres from the store
     const genresList = useSelector((store) => store.genres);
@@ -38,8 +44,6 @@ function AddMovieForm() {
     const addNewMovie = event => {
         event.preventDefault();
         dispatch({ type: 'ADD_MOVIE', payload: newMovie });
-        //updates the next 
-        //setNewMovie({ title: '', poster: '', description: '', genre_id: ''});
         history.push('/');
     }
 
@@ -58,12 +62,9 @@ function AddMovieForm() {
                 <textarea placeholder='Description' rows="4" cols="50" value={newMovie.description} onChange={handleDescriptionChange}></textarea>
                 
                 {/* drop down with genre names */}
-                <select value={newMovie.genre_id} 
-                    onChange={handleGenreChange}>
-          
-                    <option disabled value='0'>
-                        Pick One!
-                    </option>
+                <div>
+                <label for='dropdown'>Select a Genre: </label>
+                <select id='dropdown' value={newMovie.genre_id} onChange={handleGenreChange}>
 
                     {genresList.map((genre) => {
                         return (
@@ -72,8 +73,9 @@ function AddMovieForm() {
                             </option>
                         );
                     })}
-                </select>
 
+                </select>
+                </div>
                 <input type='submit' value='Save' />
             </form>
         </div>
